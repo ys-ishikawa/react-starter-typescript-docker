@@ -16,12 +16,25 @@ const Counter: React.FC<{}> = () => {
         renderTimes.current = renderTimes.current + 1;
     });
 
+    const ref = useRef<HTMLInputElement>(null!);
+    const focusInput = () => {
+        ref.current.focus();
+    }
+
+
     return (
         <div>
-            <p>value: { value }</p>
-            <button onClick={ increment }>+1</button>
-            <button onClick={ decrement }>-1</button>
-            <p>This components was re-renderes { renderTimes.current } times!</p>
+            <div>
+                <p>value: { value }</p>
+                <button onClick={ increment }>+1</button>
+                <button onClick={ decrement }>-1</button>
+                <p>This components was re-renderes { renderTimes.current } times!</p>
+            </div>
+            <div>
+                <input ref={ ref } type="text" />
+                <button onClick={ focusInput }>Click me</button>
+            </div>
+
         </div>
     );
 }
